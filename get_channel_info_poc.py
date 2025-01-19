@@ -1,9 +1,9 @@
 # Proof of concept to prove we can retrieve channel metadata from the Telegram API
 # Note: This POC code is a sequential version, may consider using async version for production
 
-
 from telethon.sync import TelegramClient
 from telethon import functions
+from config import app_name, api_id, api_hash
 
 # Input data
 channel_names = ["rybar", "mig41"]
