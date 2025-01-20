@@ -1,5 +1,5 @@
 D's SMOP.session
-config.py
 venv/
 .ideadocuments/
 documents/
+__pycache__
