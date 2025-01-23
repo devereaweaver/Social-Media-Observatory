@@ -18,10 +18,10 @@ with TelegramClient(app_name, api_id, api_hash) as client:
             functions.channels.GetFullChannelRequest(channel=channel_name)
         )
 
-    # Extract interesting data from returned API object into format
-    # that matches the database schema, then add each one to the records list
-    if channel_object is not None:
-        records.append(extract_data_dictionary_from_channel_object(channel_object))
+        # Extract interesting data from returned API object into format
+        # that matches the database schema, then add each one to the records list
+        if channel_object is not None:
+            records.append(extract_data_dictionary_from_channel_object(channel_object))
 
 # Store data into table
 if len(records) > 0:
