@@ -8,7 +8,7 @@
 import json
 from ..config import *
 from ..utilities.logic_ch2 import retrieve_and_save_channel_metadata
-from ..utilities.mq_ch2 import get_channel
+#from ..utilities.mq_ch2 import get_channel
 
 
 def consumer(app_name, api_id, api_hash):

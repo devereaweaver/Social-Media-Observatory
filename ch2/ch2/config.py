@@ -2,6 +2,7 @@
 import configparser
 import os 
 import platform
+import pika
 
 # Point to config file 
 HOME_DIR = os.environ["USERPROFILE"] if platform.system() == "Windows" else os.environ["HOME"]
@@ -18,3 +19,17 @@ config.read(config_file_full_path)
 app_name = config['telegram-credentials']['app-name']
 api_id = config['telegram-credentials']['api-id']
 api_hash = config['telegram-credentials']['api-hash']
+
+pikaparams = pika.ConnectionParameters(
+    config["rabbit-mq"]["host"],
+    credentials=pika.PlainCredentials(
+        config["rabbit-mq"]["user"],
+        config["rabbit-mq"]["password"]
+    ),
+    heartbeat=int(config["rabbit-mq"]["heartbeat"]),
+    blocked_connection_timeout=int(config["rabbit-mq"]["blocked-connection-timeout"]),
+)
+
+handles_queue = config["rabbit-mq"]["telegram-handles-queue"]
+channel_metadata_table_name = config["telegram-db"]["channel-metadata-table"]
+#seed_table_name = config["telegram-db"]["channel-seed-table"]

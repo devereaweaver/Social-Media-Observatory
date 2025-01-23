@@ -1,6 +1,6 @@
 # db_ch2.py - database api
 
-from config import config  # import the config manager object
+from ..config import config  # import the config manager object
 import sqlalchemy as sa
 from datetime import datetime
 
