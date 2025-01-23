@@ -4,10 +4,10 @@ from ..config import handles_queue
 from ..utilities.mq_ch2 import send_data_to_queue
 
 # Key-value pairs to be sent to the message queue
-# TODO: Why are hardcoding the handles here?
-# Hypotheitical message w/requisite handles and seed list
+# TODO: Figure out how to get this from the front end so I don't 
+# have to hardcode handles
 message = {
-    "handles": ["rybar", "mig41"], 
+    "handles": ["rybar", "mig41", "dvinskyclub"], 
     "seed_list": "russian_disinfo"
     }
 

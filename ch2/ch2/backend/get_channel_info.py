@@ -17,7 +17,6 @@ def consumer(app_name, api_id, api_hash):
     """
 
     def callback(ch, method, properties, body):
-        print("CALLLLLLLLBACKKKKKKK!!!")
         # Receive and parse message
         message = json.loads(body.decode("utf-8"))  # decode json message
         channel_names = message["handles"]  # extract channel names from message
