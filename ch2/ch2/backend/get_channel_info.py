@@ -17,6 +17,7 @@ def consumer(app_name, api_id, api_hash):
     """
 
     def callback(ch, method, properties, body):
+        print("CALLLLLLLLBACKKKKKKK!!!")
         # Receive and parse message
         message = json.loads(body.decode("utf-8"))  # decode json message
         channel_names = message["handles"]  # extract channel names from message
@@ -29,15 +30,15 @@ def consumer(app_name, api_id, api_hash):
         )
 
         # Contact queue to acknowledge the message has been received and processed
-        ch.back_ack(delivery_tag=method.delivery_tag)
+        ch.basic_ack(delivery_tag=method.delivery_tag)
         print("task complete!")
 
-        input_channel = get_channel()
-        input_channel.queue_declare(queue=handles_queue, durable=True)
-        input_channel.basic_qos(prefetch_count=1)
-        input_channel.basic_consume(queue=handles_queue, on_message_callback=callback)
-        print("listening for handles to look up...")
-        input_channel.start_consuming()
+    input_channel = get_channel()
+    input_channel.queue_declare(queue=handles_queue, durable=True)
+    input_channel.basic_qos(prefetch_count=1)
+    input_channel.basic_consume(on_message_callback=callback, queue=handles_queue)
+    print("listening for handles to look up...")
+    input_channel.start_consuming()
 
 
 def run(args_credentials):

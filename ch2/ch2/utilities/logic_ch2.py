@@ -58,7 +58,8 @@ def retrieve_channel_metadata(
             if channel_object is not None:
                 records.append(
                     extract_data_dictionary_from_channel_object(
-                        channel_object, channel_name
+                        #channel_object, channel_name
+                        channel_object
                     )
                 )
             else:
