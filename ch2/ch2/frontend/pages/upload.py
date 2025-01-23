@@ -1,5 +1,6 @@
 # Upload Telegram handles 
-from dash import html , dcc
+from dash import html , dcc, Input, Output, State, dash_table, no_update
+import dash
 
 layout = html.Div(
     [
@@ -23,6 +24,17 @@ layout = html.Div(
             "margin": "10px",
             },
             multiple=False,
-        )
+        ),
+        html.Div(id="drag-and-drop-feedback"),
     ]
 )
+
+@dash.callback(Output("drag-and-drop-feedback", "children"),
+               Input('drag-and-drop', 'filename'),
+               Input('drag-and-drop', 'contents'))
+def preview_file(my_filename: str, my_contents: list):
+    """
+    Provide a preview of the file the investigators selected for upload. 
+    Will alter the 'drag-and-drop-feedback' element
+    """
+    pass
