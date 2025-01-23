@@ -3,8 +3,6 @@
 # POC script to get channel metadata from Telegram API. 
 # Script has been modified to consume messages from a RabbitMQ queue. 
 
-# TODO: Need to change the directory structure to match the import statements
-# and implement the functions that are imported below.
 import json
 from ..config import *
 from ..utilities.logic_ch2 import retrieve_and_save_channel_metadata
@@ -34,9 +32,6 @@ def consumer(app_name, api_id, api_hash):
         ch.back_ack(delivery_tag=method.delivery_tag)
         print("task complete!")
 
-        # TODO: Implement the pikaparams for this to actually work, they'll be defined in the
-        # configuration file in the home directory
-        # Also need to implement configuration for handles_queue
         connection = pika.BlockingConnection(pikaparams)
         input_channel = connection.channel()
         input_channel.queue_declare(queue=handles_queue, durable=True)
@@ -46,8 +41,11 @@ def consumer(app_name, api_id, api_hash):
         input_channel.start_consuming()
 
 
-# Execute consumer function
 def run(args_credentials):
+    """
+    Execute consumer function to listne for messages from the message queue and process them
+    in perpetuity.
+    """
     consumer(
         config[args_credentials]["app-name"],
         config[args_credentials]["api-id"],

@@ -1,5 +1,9 @@
 # logic_ch2.py - contains helper functions
 
+# NOTE: TelegramClient is here so this module should be the one resonpsible for
+# reaching out the the Telegram API, just can't figure out why this isn't happening 
+# just yet
+
 from telethon.errors.rpcerrorlist import UsernameInvalidError
 from telethon.sync import TelegramClient
 from telethon import functions
