@@ -6,7 +6,7 @@
 import json
 from ..config import *
 from ..utilities.logic_ch2 import retrieve_and_save_channel_metadata
-#from ..utilities.mq_ch2 import get_channel
+from ..utilities.mq_ch2 import get_channel
 
 
 def consumer(app_name, api_id, api_hash):
@@ -32,8 +32,7 @@ def consumer(app_name, api_id, api_hash):
         ch.back_ack(delivery_tag=method.delivery_tag)
         print("task complete!")
 
-        connection = pika.BlockingConnection(pikaparams)
-        input_channel = connection.channel()
+        input_channel = get_channel()
         input_channel.queue_declare(queue=handles_queue, durable=True)
         input_channel.basic_qos(prefetch_count=1)
         input_channel.basic_consume(queue=handles_queue, on_message_callback=callback)
