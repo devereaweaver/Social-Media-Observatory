@@ -1,6 +1,5 @@
 # Publish messages to the jobs queue 
 
-# TODO: send_data_to_queue needs to be implemented before running script
 from ..config import handles_queue
 from ..utilities.mq_ch2 import send_data_to_queue
 
