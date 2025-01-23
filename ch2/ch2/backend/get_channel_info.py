@@ -47,8 +47,9 @@ def consumer(app_name, api_id, api_hash):
 
 
 # Execute consumer function
-consumer(
-    config["telegram-credentials"]["app-name"],
-    config["telegram-credentials"]["api-id"],
-    config["telegram-credentials"]["api-hash"],
-)
+def run(args_credentials):
+    consumer(
+        config[args_credentials]["app-name"],
+        config[args_credentials]["api-id"],
+        config[args_credentials]["api-hash"],
+    )
