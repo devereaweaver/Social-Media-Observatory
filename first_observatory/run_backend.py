@@ -1,4 +1,4 @@
-from ch2.backend.get_channel_info import run
+from first_observatory.backend.get_channel_info import run
 import argparse
 
 # Parse command line arguments

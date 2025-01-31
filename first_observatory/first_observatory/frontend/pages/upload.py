@@ -5,8 +5,8 @@ import base64
 import pandas as pd
 import io
 import re
-from ch2.config import handles_queue
-from ch2.utilities.mq_ch2 import send_data_to_queue
+from first_observatory.config import handles_queue
+from first_observatory.utilities.mq_ch2 import send_data_to_queue
 
 # Define the page layout with any desired components
 layout = html.Div(

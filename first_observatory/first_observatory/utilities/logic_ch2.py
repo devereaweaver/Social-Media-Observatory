@@ -15,7 +15,7 @@ from .db_ch2 import (
     insert_data_into_channel_metadata_table
 )
 
-SECONDS_TO_PAUSE_BETWEEN_CHANNEL_INFO_LOOKUPS = 30
+SECONDS_TO_PAUSE_BETWEEN_CHANNEL_INFO_LOOKUPS = 10
 
 def extract_data_dictionary_from_channel_object(channel_object):
     """
